@@ -1,0 +1,18 @@
+<h2>Edit Task</h2>
+<form action="/edit/<%= task._id %>?_method=PUT" method="post">
+
+    Title: <input type="text" name="title" value="<%= task.title %>"><br><br>
+    Description: <input type="text" name="description" value="<%= task.description %>"><br>
+<br>
+    Priority:
+    <select name="priority">
+        <option <%= task.priority=="Low"?"selected":"" %>>Low</option>
+        <option <%= task.priority=="Medium"?"selected":"" %>>Medium</option>
+        <option <%= task.priority=="High"?"selected":"" %>>High</option>
+    </select><br>
+<br>
+    Due Date: <input type="date" name="dueDate" value="<%= task.dueDate.toISOString().slice(0,10) %>"><br>
+<br>
+    <button type="submit">Update</button>
+    <a href="/dashboard">Back</a>
+</form>

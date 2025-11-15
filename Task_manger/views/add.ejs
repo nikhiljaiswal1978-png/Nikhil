@@ -1,0 +1,17 @@
+<h2>Add Task</h2>
+<form action="/add" method="post">
+    Title: <input type="text" name="title"><br><br>
+    Description: <input type="text" name="description"><br>
+<br>
+    Priority:
+    <select name="priority">
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+    </select><br>
+    <br>
+    Due Date: <input type="date" name="dueDate"><br>
+<br>
+    <button type="submit">Submit</button>
+    <a href="/dashboard">Back</a>
+</form>

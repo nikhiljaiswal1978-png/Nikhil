@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h2>Welcome, <%= username %></h2>
+
+    <p>
+        <a href="/logout">Logout</a>
+    </p>
+
+    <form action="/dashboard" method="GET">
+        <label>Search Tasks:</label>
+        <input type="text" name="q" value="<%= q %>" placeholder="Search tasks...">
+        <button type="submit">Search</button>
+
+        <% if (q) { %>
+            <a href="/dashboard">Clear</a>
+        <% } %>
+    </form>
+
+    <br>
+
+    <p>
+        <a href="/add">Add New Task</a>
+    </p>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Action</th>
+        </tr>
+
+        <% tasks.forEach(t => { %>
+        <tr>
+            <td><%= t.title %></td>
+            <td><%= t.description %></td>
+            <td><%= t.priority %></td>
+            <td><%= t.dueDate.toDateString() %></td>
+            <td>
+                <a href="/edit/<%= t._id %>">Edit</a>
+
+                <form action="/delete/<%= t._id %>?_method=DELETE" 
+                      method="post" 
+                      style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+
+</body>
+</html>
